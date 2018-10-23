@@ -1,0 +1,19 @@
+nav{
+    height: 120px;
+    box-shadow: 1px 10px 10px 7px #888888;
+    background-color: rgb(116, 6, 160);
+}
+
+.navbar{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+nav h2{
+    color: #fff;
+}
+nav h1{
+    color: #fff;
+}
+
+/* Custom Color Changes */
