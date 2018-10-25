@@ -3,6 +3,7 @@ import Navbar from './components/navbar'
 import Jumbotron from './components/jumbotron'
 import PictureContainer from './components/pictureContainer';
 import CharacterThumbnail from './components/characterThumbnail';
+import "./app.css"
 
 const character = [
     {
@@ -27,18 +28,50 @@ const character = [
         name: "kif",
         picture: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/futurama/e/e0/Kif.jpg"
     }
+];
 
-]
+//Need to create handler functions to pass as props to the thumbnails, so when clicked it changes state and score changes
 
 class App extends Component {
+    state = {
+        selected: [],
+        currentScore: 0,
+        topScore: 0
+    }
+    characterSelect = () => {
+        this.setState({ currentScore: this.state.currentScore + 1 });
+    };
+
+    checkTopScore = () => {
+        if (this.state.currentScore > this.state.topScore){
+            this.setState({topScore: this.state.currentScore})
+        } else {}
+    }
+    
+    handleClick = () => {
+        this.characterSelect();
+        this.checkTopScore();
+     }
+
     render() {
         return (
             <div>
-                <Navbar />
+                <Navbar
+                    currentScore={this.state.currentScore}
+                    topScore={this.state.topScore}
+                />
                 <Jumbotron />
                 <PictureContainer>
-                <CharacterThumbnail/>
+                {character.map(character => (
+                    <CharacterThumbnail 
+                        key={character.name}
+                        name={character.name}
+                        picture={character.picture}
+                        clickHandler={this.handleClick}
+                        />
+                ))}
                 </PictureContainer>
+
             </div>
         )
     }

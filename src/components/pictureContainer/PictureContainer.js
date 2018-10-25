@@ -1,10 +1,10 @@
 import React from "react";
 import "./pictureContainer.css"
 
-const pictureContainer = () => (
-    <div className="container">
-    Picture Container
-    </div>
-)
+const pictureContainer = (props) => (
+            <div className="container" id="pictureContainer">
+            {props.children}
+            </div>
+        )
 
 export default pictureContainer;
